@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"main.obj" 
+TO "mcu_contest" 
+RAMSIZE(256) 
