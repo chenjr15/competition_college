@@ -7,3 +7,30 @@ D:\Keil\project\microcontroller_DaSai\mcu_contest.uvproj
 Project File Date:  11/29/2016
 
 <h2>Output:</h2>
+compiling main.c...
+main.c(9): error C141: syntax error near 'P1', expected '='
+main.c(14): error C132: 'main': not in formal parameter list
+main.c(14): error C141: syntax error near '{'
+main.c(15): error C136: 'i': 'void' on variable
+main.c(15): error C244: 'i': can't initialize, bad type or class
+main.c(15): error C136: 'i': 'void' on variable
+main.c(15): error C132: 'i': not in formal parameter list
+main.c(15): error C136: 'j': 'void' on variable
+main.c(15): error C244: 'j': can't initialize, bad type or class
+main.c(15): error C136: 'j': 'void' on variable
+main.c(15): error C132: 'j': not in formal parameter list
+main.c(15): error C136: 'k': 'void' on variable
+main.c(15): error C244: 'k': can't initialize, bad type or class
+main.c(15): error C136: 'k': 'void' on variable
+main.c(15): error C132: 'k': not in formal parameter list
+main.c(16): error C141: syntax error near 'while'
+main.c(16): error C141: syntax error near '1'
+main.c(17): error C141: syntax error near ';'
+main.c(17): error C129: missing ';' before '<'
+main.c - 19 Error(s), 0 Warning(s).
+compiling main.c...
+main.c(40): warning C206: '_nop_': missing function-prototype
+main.c(40): error C264: intrinsic '_nop_': declaration/activation error
+main.c - 1 Error(s), 1 Warning(s).
+compiling main.c...
+main.c - 0 Error(s), 0 Warning(s).

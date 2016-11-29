@@ -6,9 +6,10 @@ PWM
 #define uint unsigned int
 #define uchar unsigned char
 #include<reg52.h>
-sbit led0 P1^0;
+#include<intrins.h>
+sbit led0=P1^0;
 
-void delay(uint delays)
+void delay(uint delays);
 
 void main()
 {
