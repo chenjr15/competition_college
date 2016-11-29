@@ -36,11 +36,11 @@ void main()
 
 void delay(uint sec){
 	
-	for(){
-		
-		
-		
+	for(;sec>1;sec--){
+	_nop_();
+	_nop_();
 	}
+
 	
 	
 }
