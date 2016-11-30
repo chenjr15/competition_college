@@ -3,6 +3,22 @@ PWM
 16/11/30
 抛弃原来错误的方法
 采用定时器中断
+*/
+/*中断号 0,2为外部中断 1,3为定时器中断 4为串口中断 
+即：
+0	INT0
+1	T0
+2	INT1
+3	T1
+4	serial 
+
+TCON:D7-D0			D3
+	TF1 TR1 TF0	TR0	IE1	IT1	IE0	IT0
+IE	:D7-D0			
+	EA			ES	ET1	EX1	ET0	EX0
+TMOD:D7-D0
+	GATE	C/T M1	M0|	GATE	C/T	M1	M0
+			T1		  |			T0
 
 */
 #define uint unsigned int
@@ -18,7 +34,8 @@ sbit led5=P1^5;
 sbit led6=P1^6;
 sbit led7=P1^7;
 static count=0;
-
+static count_CB=0;
+static time_PWM=0;
 void Timer0Init(void)		//20微秒@11.0592MHz
 {
 	//AUXR |= 0x80;		//定时器时钟1T模式
@@ -59,13 +76,20 @@ void timer0() interrupt 1{
 	TL0 = 0xFF;		//设置定时初值
 	TH0 = 0xFF;		//设置定时初值
 		count++;
-	if (count==1 ){
+		count_CB++;
+	if (count==time_PWM ){
 		led0=~led0;}
-	if (count==10){
+	if (count==20){
 		led0=~led0;
 		count=0;
 	}
-	
+	if(count_CB == 100)//如果过了50*20us则改变亮度
+	{
+		count_CB = 0;
+		time_PWM ++;
+	}
+	if (time_PWM == 19)
+		time_PWM=1;
 	
 }
 
