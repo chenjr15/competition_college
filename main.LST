@@ -1,4 +1,4 @@
-C51 COMPILER V9.50a   MAIN                                                                 11/30/2016 19:03:43 PAGE 1   
+C51 COMPILER V9.50a   MAIN                                                                 11/30/2016 20:08:44 PAGE 1   
 
 
 C51 COMPILER V9.50a, COMPILATION OF MODULE MAIN
@@ -45,12 +45,12 @@ line level    source
   36          static count=0;
   37          static count_CB=0;
   38          static time_PWM=0;
-  39          void Timer0Init(void)           //20微秒@11.0592MHz
+  39          void Timer0Init(void)           //5微秒@11.0592MHz
   40          {
   41   1              //AUXR |= 0x80;         //定时器时钟1T模式
   42   1              TMOD &= 0xF0;           //设置定时器模式
   43   1              TMOD |= 0x01;           //设置定时器模式
-  44   1              TL0 = 0xFF;             //设置定时初值
+  44   1              TL0 = 0xFB;             //设置定时初值
   45   1              TH0 = 0xFF;             //设置定时初值
   46   1              TF0 = 0;                //清除TF0标志
   47   1              TR0 = 1;                //定时器0开始计时
@@ -62,7 +62,7 @@ line level    source
   53   1      }
   54          
   55          
-C51 COMPILER V9.50a   MAIN                                                                 11/30/2016 19:03:43 PAGE 2   
+C51 COMPILER V9.50a   MAIN                                                                 11/30/2016 20:08:44 PAGE 2   
 
   56          void Delay200ms()               //@11.0592MHz
   57          {
@@ -84,50 +84,51 @@ line level    source
   73   1              
   74   1              //因为定时器在溢出后寄存器中的初值寄存器自动归零，
   75   1              //所以需要重新赋值才能有想要的延时      
-  76   1              TL0 = 0xFF;             //设置定时初值
+  76   1              TL0 = 0xFB;             //设置定时初值
   77   1              TH0 = 0xFF;             //设置定时初值
   78   1                      count++;
   79   1                      count_CB++;
   80   1              if (count==time_PWM ){
   81   2                      led0=~led0;}
-  82   1              if (count==20){
+  82   1              if (count==500){
   83   2                      led0=~led0;
   84   2                      count=0;
   85   2              }
-  86   1              if(count_CB == 100)//如果过了50*20us则改变亮度
+  86   1              if(count_CB == 25)//如果过了50*20us则改变亮度
   87   1              {
   88   2                      count_CB = 0;
   89   2                      time_PWM ++;
   90   2              }
-  91   1              if (time_PWM == 19)
-  92   1                      time_PWM=1;
-  93   1              
-  94   1      }
-  95          
+  91   1              if (time_PWM == 499){
+  92   2                      time_PWM=1;
+  93   2      
+  94   2              }
+  95   1      }
   96          
-  97          void main()
-  98          {
-  99   1              
- 100   1              Timer0Init();
- 101   1              //初始化定时器
- 102   1              EA=1;
- 103   1              //允许中中断
- 104   1              ET0=1;
- 105   1              //允许定时器中断
- 106   1              led0=0;
- 107   1              led1=0;
- 108   1              while(1);
- 109   1              
+  97          
+  98          void main()
+  99          {
+ 100   1              
+ 101   1              Timer0Init();
+ 102   1              //初始化定时器
+ 103   1              EA=1;
+ 104   1              //允许中中断
+ 105   1              ET0=1;
+ 106   1              //允许定时器中断
+ 107   1              led0=0;
+ 108   1              led1=0;
+ 109   1              while(1);
  110   1              
- 111   1      }
+ 111   1              
+ 112   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    145    ----
+   CODE SIZE        =    152    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----    ----
-C51 COMPILER V9.50a   MAIN                                                                 11/30/2016 19:03:43 PAGE 3   
+C51 COMPILER V9.50a   MAIN                                                                 11/30/2016 20:08:44 PAGE 3   
 
+   XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =      6    ----
    IDATA SIZE       =   ----    ----

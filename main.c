@@ -36,12 +36,12 @@ sbit led7=P1^7;
 static count=0;
 static count_CB=0;
 static time_PWM=0;
-void Timer0Init(void)		//20微秒@11.0592MHz
+void Timer0Init(void)		//5微秒@11.0592MHz
 {
 	//AUXR |= 0x80;		//定时器时钟1T模式
 	TMOD &= 0xF0;		//设置定时器模式
 	TMOD |= 0x01;		//设置定时器模式
-	TL0 = 0xFF;		//设置定时初值
+	TL0 = 0xFB;		//设置定时初值
 	TH0 = 0xFF;		//设置定时初值
 	TF0 = 0;		//清除TF0标志
 	TR0 = 1;		//定时器0开始计时
@@ -73,24 +73,25 @@ void timer0() interrupt 1{
 	
 	//因为定时器在溢出后寄存器中的初值寄存器自动归零，
 	//所以需要重新赋值才能有想要的延时	
-	TL0 = 0xFF;		//设置定时初值
+	TL0 = 0xFB;		//设置定时初值
 	TH0 = 0xFF;		//设置定时初值
 		count++;
 		count_CB++;
 	if (count==time_PWM ){
 		led0=~led0;}
-	if (count==20){
+	if (count==500){
 		led0=~led0;
 		count=0;
 	}
-	if(count_CB == 100)//如果过了50*20us则改变亮度
+	if(count_CB == 25)//如果过了50*20us则改变亮度
 	{
 		count_CB = 0;
 		time_PWM ++;
 	}
-	if (time_PWM == 19)
+	if (time_PWM == 499){
 		time_PWM=1;
-	
+
+	}
 }
 
 
