@@ -1,4 +1,4 @@
-C51 COMPILER V9.50a   MAIN                                                                 11/30/2016 20:08:44 PAGE 1   
+C51 COMPILER V9.50a   MAIN                                                                 11/30/2016 21:54:01 PAGE 1   
 
 
 C51 COMPILER V9.50a, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   53   1      }
   54          
   55          
-C51 COMPILER V9.50a   MAIN                                                                 11/30/2016 20:08:44 PAGE 2   
+C51 COMPILER V9.50a   MAIN                                                                 11/30/2016 21:54:01 PAGE 2   
 
   56          void Delay200ms()               //@11.0592MHz
   57          {
@@ -90,21 +90,21 @@ line level    source
   79   1                      count_CB++;
   80   1              if (count==time_PWM ){
   81   2                      led0=~led0;}
-  82   1              if (count==500){
+  82   1              if (count==50){
   83   2                      led0=~led0;
-  84   2                      count=0;
-  85   2              }
-  86   1              if(count_CB == 25)//如果过了50*20us则改变亮度
-  87   1              {
-  88   2                      count_CB = 0;
-  89   2                      time_PWM ++;
-  90   2              }
-  91   1              if (time_PWM == 499){
-  92   2                      time_PWM=1;
-  93   2      
-  94   2              }
-  95   1      }
-  96          
+  84   2                      count=0;}               
+  85   1              if (time_PWM >= 49){
+  86   2                      time_PWM=1;}
+  87   1                      }
+  88          
+  89                          
+  90          void KeyINT0() interrupt 0{
+  91   1              
+  92   1              time_PWM +=20;
+  93   1              
+  94   1              
+  95   1              
+  96   1      }
   97          
   98          void main()
   99          {
@@ -113,10 +113,10 @@ line level    source
  102   1              //初始化定时器
  103   1              EA=1;
  104   1              //允许中中断
- 105   1              ET0=1;
- 106   1              //允许定时器中断
- 107   1              led0=0;
- 108   1              led1=0;
+ 105   1              ET0=1;EX0=1;
+ 106   1              IT0=1;
+ 107   1              //允许定时器中断,外部中断
+ 108   1              led0=0;
  109   1              while(1);
  110   1              
  111   1              
@@ -124,9 +124,9 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    152    ----
+   CODE SIZE        =    153    ----
    CONSTANT SIZE    =   ----    ----
-C51 COMPILER V9.50a   MAIN                                                                 11/30/2016 20:08:44 PAGE 3   
+C51 COMPILER V9.50a   MAIN                                                                 11/30/2016 21:54:01 PAGE 3   
 
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

@@ -79,21 +79,21 @@ void timer0() interrupt 1{
 		count_CB++;
 	if (count==time_PWM ){
 		led0=~led0;}
-	if (count==500){
+	if (count==50){
 		led0=~led0;
-		count=0;
-	}
-	if(count_CB == 25)//如果过了50*20us则改变亮度
-	{
-		count_CB = 0;
-		time_PWM ++;
-	}
-	if (time_PWM == 499){
-		time_PWM=1;
+		count=0;}		
+	if (time_PWM >= 49){
+		time_PWM=1;}
+		}
 
-	}
+		
+void KeyINT0() interrupt 0{
+	
+	time_PWM +=20;
+	
+	
+	
 }
-
 
 void main()
 {
@@ -102,10 +102,10 @@ void main()
 	//初始化定时器
 	EA=1;
 	//允许中中断
-	ET0=1;
-	//允许定时器中断
+	ET0=1;EX0=1;
+	IT0=1;
+	//允许定时器中断,外部中断,中断触发方式为下降沿触发
 	led0=0;
-	led1=0;
 	while(1);
 	
 	
