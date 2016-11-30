@@ -1,6 +1,8 @@
 /*
 PWM
-
+16/11/30
+抛弃原来错误的方法
+采用定时器中断
 
 */
 #define uint unsigned int
@@ -8,30 +10,18 @@ PWM
 #include<reg52.h>
 #include<intrins.h>
 sbit led0=P1^0;
+sbit led1=P1^1;
+sbit led2=P1^2;
+sbit led3=P1^3;
+sbit led4=P1^4;
+sbit led5=P1^5;
+sbit led6=P1^6;
+sbit led7=P1^7;
 
 void delay(uint delays);
 void Delay200ms();
 void main()
 {
-	uint i=1,j=0,k=0;
-	while(1){	
-		i=0;
-	for (;i<100;i+=i){
-	led0=0;
-	delay(i);
-	led0=1;
-	delay(2001-i);
-	}
-	Delay200ms();
-	for (;i>1;i-=i){
-	led0=0;
-	delay(i);
-	led0=1;
-	delay(2001-i);
-	}
-	Delay200ms();Delay200ms();
-	
-	}
 	
 	
 }
