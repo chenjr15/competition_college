@@ -359,6 +359,16 @@
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
             </File>
+            <File>
+              <FileName>mcu_contest.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\mcu_contest.h</FilePath>
+            </File>
+            <File>
+              <FileName>mcu_contest .c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\mcu_contest .c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
