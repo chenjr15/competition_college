@@ -91,13 +91,17 @@ void scankey(){
 	}}
 	if (keyplus==0){
 		Delay5ms();Delay5ms();
-		if((keyplus==0)&(brightness<30)){
-		brightness+=10;}
+		if(keyplus==0){
+		brightness+=10;
+		if(brightness>=30){brighness=30:}
+		
+		}
 }
 	if (keyminus==0){
 		Delay5ms();Delay5ms();
-		if((keyminus==0)&(brightness>10)){
+		if(keyminus==0){
 		brightness-=10;
+			if(brightness<=0){brighness=10:}
 	}
 	
 	}
@@ -109,9 +113,9 @@ void timer0() interrupt 1{
 	//所以需要重新赋值才能有想要的延时	
 	TL0 = 0x33;		//设置定时初值
 	TH0 = 0xFE;		//设置定时初值
-	brightness%=30;
+	if(brightness>=30){brighness=30:}
 		count++;
-	if (count==(brightness*(1-(color/10)))){
+	if (count==(brightness*((uchar)(color/10)))){
 		led2=0;}
 	if (count==(brightness*(1-(color/10)) )){
 		led3=0;}
@@ -123,4 +127,3 @@ void timer0() interrupt 1{
 	//time_PWM %=20;
 
 }
-
