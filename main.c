@@ -1,5 +1,5 @@
-/*
-PWM
+
+/*PWM
 16/11/30
 抛弃原来错误的方法
 采用定时器中断
@@ -24,8 +24,7 @@ TMOD:D7-D0
 #include "mcu_contest.h"
 
 
-void main()
-{
+void main(){
 	
 	Timer0Init();
 	//初始化定时器
@@ -55,8 +54,15 @@ void main()
 	
 	*/
 		//1.key
+		brightness1=(uchar)brightness*(color*0.1);
+		brightness2=brightness-brightness1;
 		scankey();
-		
+		switch(mode){
+			case 0: //手动
+				break;
+			case 1://自动
+				break;
+		}
 		
 	}
 	

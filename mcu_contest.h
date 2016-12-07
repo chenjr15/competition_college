@@ -18,8 +18,9 @@ sbit keycolor=P2^1;	//调色温
 sbit keyminus=P2^2;	//+
 sbit keyplus=P2^3;	//-
 
-uchar mode=0,color=5,brightness=10;
-static sint count=0;
+uchar mode=0,color=1,brightness=10;
+uchar brightness1,brightness2;
+uchar count=0;
 
 void Timer0Init(void);
 void delay(uint sec);
@@ -30,13 +31,13 @@ void scankey();
 
 
 
-void Timer0Init(void)		//500微秒@11.0592MHz
+void Timer0Init(void)		//1ms@11.0592MHz
 {
 	//AUXR |= 0x80;		//定时器时钟1T模式
 	TMOD &= 0xF0;		//设置定时器模式
 	TMOD |= 0x01;		//设置定时器模式
-	TL0 = 0x33;		//设置定时初值
-	TH0 = 0xFE;		//设置定时初值
+	TL0 = 0x66;		//设置定时初值
+	TH0 = 0xfc;		//设置定时初值
 	TF0 = 0;		//清除TF0标志
 	TR0 = 1;		//定时器0开始计时
 }
@@ -65,6 +66,7 @@ void scankey(){
 		//未做防抖处理
 		Delay5ms();Delay5ms();
 		if (keymode==0){
+			
 			mode++;
 			mode%=2;
 			/*
@@ -74,9 +76,9 @@ void scankey(){
 	}}
 	if (keycolor==0){
 		//if (mode!=2){
-		Delay5ms();Delay5ms();
+		//Delay5ms();Delay5ms();
 		if (keycolor==0){
-			
+			while(!keycolor);
 			color++;
 			color%=10;//11档色温，等于10时归0
 	//}
@@ -89,41 +91,44 @@ void scankey(){
 	
 	*/
 	}}
-	if (keyplus==0){
-		Delay5ms();Delay5ms();
-		if(keyplus==0){
-		brightness+=10;
-		if(brightness>=30){brighness=30:}
-		
-		}
-}
-	if (keyminus==0){
-		Delay5ms();Delay5ms();
-		if(keyminus==0){
-		brightness-=10;
-			if(brightness<=0){brighness=10:}
+	if (mode==0){
+		if (keyplus==0){
+			//Delay5ms();
+			if(keyplus==0){
+				while(!keyplus);
+			brightness=5+brightness;
+			if(brightness>=15){brightness=15;}
+			}}
+		if (keyminus==0){
+			//Delay5ms();
+			if(keyminus==0){
+				while(!keyminus);
+				brightness=brightness-5;
+				if(brightness<=0)
+					brightness=5;}
+	}}
 	}
-	
-	}
-	
-}
+
 void timer0() interrupt 1{
 	
 	//因为定时器在溢出后寄存器中的初值寄存器自动归零，
 	//所以需要重新赋值才能有想要的延时	
-	TL0 = 0x33;		//设置定时初值
-	TH0 = 0xFE;		//设置定时初值
-	if(brightness>=30){brighness=30:}
+	TL0 = 0x66;		//设置定时初值
+	TH0 = 0xFc;		//设置定时初值
+//	if(brightness>=30){brightness=30;}
 		count++;
-	if (count==(brightness*((uchar)(color/10)))){
-		led2=0;}
-	if (count==(brightness*(1-(color/10)) )){
-		led3=0;}
+
+	if (count==brightness1){
+		led0=1;}
+		
+	if (count==brightness2){
+		led1=1;}
 	
-	if (count==30){
-		led2=1;
-		led3=1;
-		count=0;}		
+	if (count>=15){
+		led0=0;
+		led1=0;
+		count=0;}	
+
 	//time_PWM %=20;
 
 }

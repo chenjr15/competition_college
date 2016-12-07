@@ -1,18 +1,22 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        12/04/2016  00:07:05  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        12/07/2016  18:53:26  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
 D:\KEIL\C51\BIN\BL51.EXE STARTUP.obj, main.obj TO mcu_contest RAMSIZE (256)
 
 
-MEMORY MODEL: SMALL
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
 
 
 INPUT MODULES INCLUDED:
   STARTUP.obj (?C_STARTUP)
   main.obj (MAIN)
+  D:\KEIL\C51\LIB\C51FPS.LIB (?C?FPMUL)
+  D:\KEIL\C51\LIB\C51FPS.LIB (?C?FCAST)
+  D:\KEIL\C51\LIB\C51FPS.LIB (?C?CASTF)
+  D:\KEIL\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
   D:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
-  D:\KEIL\C51\LIB\C51S.LIB (?C?IMUL)
+  D:\KEIL\C51\LIB\C51S.LIB (?C?LNEG)
 
 
 LINK MAP OF MODULE:  mcu_contest (?C_STARTUP)
@@ -23,22 +27,22 @@ LINK MAP OF MODULE:  mcu_contest (?C_STARTUP)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0005H     UNIT         ?DT?MAIN
-            IDATA   000DH     0001H     UNIT         ?STACK
+            DATA    0008H     0006H     UNIT         ?DT?MAIN
+            IDATA   000EH     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
                     0003H     0008H                  *** GAP ***
             CODE    000BH     0003H     ABSOLUTE     
-            CODE    000EH     008CH     UNIT         ?C_C51STARTUP
-            CODE    009AH     0076H     UNIT         ?PR?TIMER0?MAIN
-            CODE    0110H     0075H     UNIT         ?PR?SCANKEY?MAIN
-            CODE    0185H     0012H     UNIT         ?C?LIB_CODE
-            CODE    0197H     0011H     UNIT         ?PR?TIMER0INIT?MAIN
-            CODE    01A8H     0010H     UNIT         ?PR?MAIN?MAIN
-            CODE    01B8H     000EH     UNIT         ?C_INITSEG
-            CODE    01C6H     000CH     UNIT         ?PR?DELAY5MS?MAIN
-            CODE    01D2H     000BH     UNIT         ?PR?_DELAY?MAIN
+            CODE    000EH     01D3H     UNIT         ?C?LIB_CODE
+            CODE    01E1H     008CH     UNIT         ?C_C51STARTUP
+            CODE    026DH     0058H     UNIT         ?PR?SCANKEY?MAIN
+            CODE    02C5H     0046H     UNIT         ?PR?MAIN?MAIN
+            CODE    030BH     002DH     UNIT         ?PR?TIMER0?MAIN
+            CODE    0338H     0011H     UNIT         ?PR?TIMER0INIT?MAIN
+            CODE    0349H     000DH     UNIT         ?C_INITSEG
+            CODE    0356H     000BH     UNIT         ?PR?_DELAY?MAIN
+            CODE    0361H     0009H     UNIT         ?PR?DELAY5MS?MAIN
 
 
 
@@ -55,12 +59,12 @@ SEGMENT
 ?PR?MAIN?MAIN
   +--> ?PR?TIMER0INIT?MAIN
   +--> ?PR?SCANKEY?MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/07/2016  18:53:26  PAGE 2
+
+
 
 ?PR?SCANKEY?MAIN
   +--> ?PR?DELAY5MS?MAIN
-
-BL51 BANKED LINKER/LOCATER V6.22                                                      12/04/2016  00:07:05  PAGE 2
-
 
 
 
@@ -70,8 +74,8 @@ SYMBOL TABLE OF MODULE:  mcu_contest (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:000EH         SEGMENT       ?C_C51STARTUP
-  I:000DH         SEGMENT       ?STACK
+  C:01E1H         SEGMENT       ?C_C51STARTUP
+  I:000EH         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
@@ -80,7 +84,7 @@ SYMBOL TABLE OF MODULE:  mcu_contest (?C_STARTUP)
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:0011H         SYMBOL        IDATALOOP
+  C:01E4H         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
@@ -89,18 +93,18 @@ SYMBOL TABLE OF MODULE:  mcu_contest (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:000EH         SYMBOL        STARTUP1
+  C:01E1H         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:000EH         LINE#         133
-  C:0010H         LINE#         134
-  C:0011H         LINE#         135
-  C:0012H         LINE#         136
-  C:0014H         LINE#         185
-  C:0017H         LINE#         196
+  C:01E1H         LINE#         133
+  C:01E3H         LINE#         134
+  C:01E4H         LINE#         135
+  C:01E5H         LINE#         136
+  C:01E7H         LINE#         185
+  C:01EAH         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        MAIN
@@ -109,140 +113,157 @@ SYMBOL TABLE OF MODULE:  mcu_contest (?C_STARTUP)
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
   B:00A8H.7       PUBLIC        EA
-  C:01C9H         PUBLIC        Delay5ms
+  C:0361H         PUBLIC        Delay5ms
   D:00A8H         PUBLIC        IE
-  C:01D2H         PUBLIC        _delay
+  C:0356H         PUBLIC        _delay
   B:00A0H.3       PUBLIC        keyplus
   D:00B8H         PUBLIC        IP
   D:0008H         PUBLIC        color
-  C:01A8H         PUBLIC        main
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/07/2016  18:53:26  PAGE 3
+
+
+  C:02C5H         PUBLIC        main
   D:0009H         PUBLIC        mode
-  D:000AH         SYMBOL        count
+  D:000AH         PUBLIC        count
   D:0098H         PUBLIC        SCON
-BL51 BANKED LINKER/LOCATER V6.22                                                      12/04/2016  00:07:05  PAGE 3
-
-
   D:0089H         PUBLIC        TMOD
   D:0088H         PUBLIC        TCON
-  D:000CH         PUBLIC        brightness
+  D:000BH         PUBLIC        brightness
   B:00A8H.1       PUBLIC        ET0
   B:0088H.5       PUBLIC        TF0
-  C:0197H         PUBLIC        Timer0Init
+  C:0338H         PUBLIC        Timer0Init
   D:008CH         PUBLIC        TH0
   B:00A8H.0       PUBLIC        EX0
   B:0088H.0       PUBLIC        IT0
   D:008AH         PUBLIC        TL0
-  C:009AH         PUBLIC        timer0
+  C:030BH         PUBLIC        timer0
   B:0088H.4       PUBLIC        TR0
+  B:0090H.0       PUBLIC        led0
+  B:0090H.1       PUBLIC        led1
   D:00C8H         PUBLIC        T2CON
-  B:0090H.2       PUBLIC        led2
-  B:0090H.3       PUBLIC        led3
   B:00A0H.1       PUBLIC        keycolor
-  C:0110H         PUBLIC        scankey
+  D:000CH         PUBLIC        brightness1
+  C:026DH         PUBLIC        scankey
+  D:000DH         PUBLIC        brightness2
   B:00A0H.0       PUBLIC        keymode
   B:00A0H.2       PUBLIC        keyminus
   D:00D0H         PUBLIC        PSW
   -------         PROC          TIMER0INIT
-  C:0197H         LINE#         33
-  C:0197H         LINE#         34
-  C:0197H         LINE#         36
-  C:019AH         LINE#         37
-  C:019DH         LINE#         38
-  C:01A0H         LINE#         39
-  C:01A3H         LINE#         40
-  C:01A5H         LINE#         41
-  C:01A7H         LINE#         42
+  C:0338H         LINE#         34
+  C:0338H         LINE#         35
+  C:0338H         LINE#         37
+  C:033BH         LINE#         38
+  C:033EH         LINE#         39
+  C:0341H         LINE#         40
+  C:0344H         LINE#         41
+  C:0346H         LINE#         42
+  C:0348H         LINE#         43
   -------         ENDPROC       TIMER0INIT
   -------         PROC          _DELAY
   D:0006H         SYMBOL        sec
-  C:01D2H         LINE#         43
-  C:01D2H         LINE#         45
-  C:01DCH         LINE#         47
+  C:0356H         LINE#         44
+  C:0356H         LINE#         46
+  C:0360H         LINE#         48
   -------         ENDPROC       _DELAY
-  -------         PROC          L?0039
-  -------         ENDPROC       L?0039
   -------         PROC          DELAY5MS
   -------         DO            
   D:0007H         SYMBOL        i
   D:0006H         SYMBOL        j
   -------         ENDDO         
-  C:01C9H         LINE#         50
-  C:01C9H         LINE#         51
-  C:01C9H         LINE#         54
-  C:01CBH         LINE#         55
-  C:01CDH         LINE#         57
-  C:01CDH         LINE#         58
-  C:01CFH         LINE#         59
-  C:01D1H         LINE#         60
+  C:0361H         LINE#         51
+  C:0361H         LINE#         52
+  C:0361H         LINE#         55
+  C:0363H         LINE#         56
+  C:0365H         LINE#         58
+  C:0365H         LINE#         59
+  C:0367H         LINE#         60
+  C:0369H         LINE#         61
   -------         ENDPROC       DELAY5MS
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/07/2016  18:53:26  PAGE 4
+
+
   -------         PROC          SCANKEY
-  C:0110H         LINE#         62
-  C:0110H         LINE#         64
-  C:0113H         LINE#         66
-BL51 BANKED LINKER/LOCATER V6.22                                                      12/04/2016  00:07:05  PAGE 4
-
-
-  C:0116H         LINE#         67
-  C:0119H         LINE#         68
-  C:011BH         LINE#         69
-  C:011EH         LINE#         74
-  C:011EH         LINE#         75
-  C:0121H         LINE#         77
-  C:0124H         LINE#         78
-  C:0127H         LINE#         80
-  C:0129H         LINE#         81
-  C:0132H         LINE#         91
-  C:0132H         LINE#         92
-  C:0135H         LINE#         93
-  C:013BH         LINE#         94
-  C:0155H         LINE#         95
-  C:015BH         LINE#         96
-  C:015BH         LINE#         97
-  C:015EH         LINE#         98
-  C:0164H         LINE#         99
-  C:017EH         LINE#         100
-  C:0184H         LINE#         101
-  C:0184H         LINE#         103
-  C:0184H         LINE#         105
+  C:026DH         LINE#         63
+  C:026DH         LINE#         65
+  C:0270H         LINE#         67
+  C:0276H         LINE#         68
+  C:0279H         LINE#         70
+  C:027BH         LINE#         71
+  C:027EH         LINE#         76
+  C:027EH         LINE#         77
+  C:0281H         LINE#         80
+  C:0284H         LINE#         81
+  C:0287H         LINE#         82
+  C:0289H         LINE#         83
+  C:0292H         LINE#         93
+  C:0292H         LINE#         94
+  C:0296H         LINE#         95
+  C:0299H         LINE#         97
+  C:029CH         LINE#         98
+  C:029FH         LINE#         99
+  C:02A5H         LINE#         100
+  C:02ADH         LINE#         101
+  C:02ADH         LINE#         102
+  C:02B0H         LINE#         104
+  C:02B3H         LINE#         105
+  C:02B6H         LINE#         106
+  C:02BCH         LINE#         107
+  C:02C1H         LINE#         108
+  C:02C4H         LINE#         109
+  C:02C4H         LINE#         110
   -------         ENDPROC       SCANKEY
   -------         PROC          TIMER0
-  C:009AH         LINE#         106
-  C:00ADH         LINE#         110
-  C:00B0H         LINE#         111
-  C:00B3H         LINE#         112
-  C:00BCH         LINE#         113
-  C:00C4H         LINE#         114
-  C:00E3H         LINE#         115
-  C:00E5H         LINE#         116
-  C:00EDH         LINE#         117
-  C:00EFH         LINE#         119
-  C:00F7H         LINE#         120
-  C:00F9H         LINE#         121
-  C:00FBH         LINE#         122
-  C:00FFH         LINE#         125
+  C:030BH         LINE#         112
+  C:030FH         LINE#         116
+  C:0312H         LINE#         117
+  C:0315H         LINE#         119
+  C:0317H         LINE#         121
+  C:031CH         LINE#         122
+  C:031EH         LINE#         124
+  C:0323H         LINE#         125
+  C:0325H         LINE#         127
+  C:032CH         LINE#         128
+  C:032EH         LINE#         129
+  C:0330H         LINE#         130
+  C:0333H         LINE#         134
   -------         ENDPROC       TIMER0
   -------         PROC          MAIN
-  C:01A8H         LINE#         27
-  C:01A8H         LINE#         28
-  C:01A8H         LINE#         30
-  C:01ABH         LINE#         32
-  C:01ADH         LINE#         34
-  C:01B1H         LINE#         35
-  C:01B3H         LINE#         38
-  C:01B3H         LINE#         58
-  C:01B6H         LINE#         61
+  C:02C5H         LINE#         27
+  C:02C5H         LINE#         29
+  C:02C8H         LINE#         31
+  C:02CAH         LINE#         33
+  C:02CEH         LINE#         34
+  C:02D0H         LINE#         37
+  C:02D0H         LINE#         57
+  C:02FFH         LINE#         58
+  C:0306H         LINE#         59
+  C:0309H         LINE#         60
   -------         ENDPROC       MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/07/2016  18:53:26  PAGE 5
+
+
   -------         ENDMOD        MAIN
 
-  -------         MODULE        ?C?IMUL
-  C:0185H         PUBLIC        ?C?IMUL
-  -------         ENDMOD        ?C?IMUL
+  -------         MODULE        ?C?FPMUL
+  C:000EH         PUBLIC        ?C?FPMUL
+  -------         ENDMOD        ?C?FPMUL
+
+  -------         MODULE        ?C?FCAST
+  C:011EH         PUBLIC        ?C?FCASTC
+  C:0119H         PUBLIC        ?C?FCASTI
+  C:0114H         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        ?C?CASTF
+  C:0152H         PUBLIC        ?C?CASTF
+  -------         ENDMOD        ?C?CASTF
+
+  -------         MODULE        ?C?LNEG
+  C:01D3H         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-BL51 BANKED LINKER/LOCATER V6.22                                                      12/04/2016  00:07:05  PAGE 5
-
-
     SEGMENT: ?PR?_DELAY?MAIN
 
-Program Size: data=14.0 xdata=0 code=469
+Program Size: data=15.0 xdata=0 code=866
 LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)
