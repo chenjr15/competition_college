@@ -18,10 +18,11 @@ sbit keycolor=P2^1;	//调色温
 sbit keyminus=P2^2;	//+
 sbit keyplus=P2^3;	//-
 
+sbit peoplein=P2^4;
 uchar mode=0,color=1,brightness=10;
 uchar brightness1,brightness2;
 uchar count=0;
-
+bit lighton=1;
 void Timer0Init(void);
 void delay(uint sec);
 void Delay5ms();
@@ -62,11 +63,11 @@ void Delay5ms()		//@11.0592MHz
 
 void scankey(){
 	
-	if (keymode==0){  
+	if (keymode==0){ 
 		//未做防抖处理
 		Delay5ms();Delay5ms();
 		if (keymode==0){
-			
+			while(!keymode);
 			mode++;
 			mode%=2;
 			/*
@@ -76,7 +77,7 @@ void scankey(){
 	}}
 	if (keycolor==0){
 		//if (mode!=2){
-		//Delay5ms();Delay5ms();
+		Delay5ms();Delay5ms();
 		if (keycolor==0){
 			while(!keycolor);
 			color++;
@@ -93,14 +94,14 @@ void scankey(){
 	}}
 	if (mode==0){
 		if (keyplus==0){
-			//Delay5ms();
+			Delay5ms();
 			if(keyplus==0){
 				while(!keyplus);
 			brightness=5+brightness;
 			if(brightness>=15){brightness=15;}
 			}}
 		if (keyminus==0){
-			//Delay5ms();
+			Delay5ms();
 			if(keyminus==0){
 				while(!keyminus);
 				brightness=brightness-5;
@@ -117,7 +118,7 @@ void timer0() interrupt 1{
 	TH0 = 0xFc;		//设置定时初值
 //	if(brightness>=30){brightness=30;}
 		count++;
-
+if(lighton){
 	if (count==brightness1){
 		led0=1;}
 		
@@ -130,5 +131,5 @@ void timer0() interrupt 1{
 		count=0;}	
 
 	//time_PWM %=20;
-
+}
 }

@@ -12,27 +12,7 @@ compiling main.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY?MAIN
-Program Size: data=22.0 xdata=0 code=1220
-creating hex file from "mcu_contest"...
-"mcu_contest" - 0 Error(s), 1 Warning(s).
-Build target 'Target 1'
-compiling main.c...
-mcu_contest.h(121): error C202: 'brightness1': undefined identifier
-mcu_contest.h(124): error C202: 'brightness2': undefined identifier
-mcu_contest.h(124): error C141: syntax error near '{'
-main.c(65): error C202: 'brightness1': undefined identifier
-main.c(66): error C202: 'brightness2': undefined identifier
-Target not created
-Build target 'Target 1'
-compiling main.c...
-mcu_contest.h(124): error C141: syntax error near '{'
-Target not created
-Build target 'Target 1'
-compiling main.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY?MAIN
-Program Size: data=15.0 xdata=0 code=866
+Program Size: data=15.1 xdata=0 code=893
 creating hex file from "mcu_contest"...
 "mcu_contest" - 0 Error(s), 1 Warning(s).
 Build target 'Target 1'
@@ -40,6 +20,6 @@ compiling main.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY?MAIN
-Program Size: data=15.0 xdata=0 code=866
+Program Size: data=15.1 xdata=0 code=909
 creating hex file from "mcu_contest"...
 "mcu_contest" - 0 Error(s), 1 Warning(s).

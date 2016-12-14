@@ -1,4 +1,4 @@
-C51 COMPILER V9.50a   MAIN                                                                 12/07/2016 18:53:26 PAGE 1   
+C51 COMPILER V9.50a   MAIN                                                                 12/10/2016 00:25:04 PAGE 1   
 
 
 C51 COMPILER V9.50a, COMPILATION OF MODULE MAIN
@@ -43,53 +43,62 @@ line level    source
   34   1              IT0=1;
   35   1              //允许定时器中断,外部中断,中断触发方式为下降沿触发
   36   1              //led0=0;
-  37   1              while(1){
-  38   2              /*
-  39   2              1.扫描按键　（亮度／模式／色温）
-  40   2              2.判断模式，自动或手动
-  41   2              若自动：
-  42   2                      读取红外传感器的值
-  43   2                              若为0 设置PWM亮度（占空比）为1
-  44   2                              若为1 读取亮度传感器的值，并设置相应占空比
-  45   2              若手动;
-  46   2                      设置亮度往传感器对应值接近两个单位  正常亮度时光敏电阻传感器大概为2.5-2.
+  37   1              peoplein=0;
+  38   1              while(1){
+  39   2              /*
+  40   2              1.扫描按键　（亮度／模式／色温）
+  41   2              2.判断模式，自动或手动
+  42   2              若自动：
+  43   2                      读取红外传感器的值
+  44   2                              若为0 设置PWM亮度（占空比）为1
+  45   2                              若为1 读取亮度传感器的值，并设置相应占空比
+  46   2              若手动;
+  47   2                      设置亮度往传感器对应值接近两个单位  正常亮度时光敏电阻传感器大概为2.5-2.
              -7K
-  47   2              3.读取温度湿度
-  48   2              4.读取时间
-  49   2              5.刷新OLED屏 时间，日期，温度/湿度，亮度，自动/手动
-  50   2              
-  51   2              调整时间未完成
-  52   2              PWM将在定时器中断中完成
-  53   2              
+  48   2              3.读取温度湿度
+  49   2              4.读取时间
+  50   2              5.刷新OLED屏 时间，日期，温度/湿度，亮度，自动/手动
+  51   2              
+  52   2              调整时间未完成
+  53   2              PWM将在定时器中断中完成
   54   2              
-C51 COMPILER V9.50a   MAIN                                                                 12/07/2016 18:53:26 PAGE 2   
+C51 COMPILER V9.50a   MAIN                                                                 12/10/2016 00:25:04 PAGE 2   
 
-  55   2              */
-  56   2                      //1.key
-  57   2                      brightness1=(uchar)brightness*(color*0.1);
-  58   2                      brightness2=brightness-brightness1;
-  59   2                      scankey();
-  60   2                      switch(mode){
-  61   3                              case 0: //手动
-  62   3                                      break;
-  63   3                              case 1://自动
+  55   2              
+  56   2              */
+  57   2                      //1.key
+  58   2                      brightness1=(uchar)brightness*(color*0.1);
+  59   2                      brightness2=brightness-brightness1;
+  60   2                      scankey();
+  61   2                      switch(mode){
+  62   3                              case 0: //手动
+  63   3                              lighton=1;
   64   3                                      break;
-  65   3                      }
-  66   2                      
-  67   2              }
-  68   1              
-  69   1              
-  70   1      }
+  65   3                              case 1://自动
+  66   3                                      if(!peoplein) {
+  67   4                                              lighton=0;
+  68   4                                      }else{
+  69   4                                              lighton=1;
+  70   4                                      }
+  71   3                              
+  72   3                              
+  73   3                                      break;
+  74   3                      }
+  75   2                      
+  76   2              }
+  77   1              
+  78   1              
+  79   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    240    ----
+   CODE SIZE        =    281    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =      6    ----
    IDATA SIZE       =   ----    ----
-   BIT SIZE         =   ----    ----
+   BIT SIZE         =      1    ----
 END OF MODULE INFORMATION.
 
 

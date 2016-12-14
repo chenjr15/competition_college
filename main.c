@@ -1,8 +1,6 @@
 
-/*PWM
-16/11/30
-抛弃原来错误的方法
-采用定时器中断
+/*PWM OK
+
 */
 /*中断号 0,2为外部中断 1,3为定时器中断 4为串口中断 
 即：
@@ -34,6 +32,7 @@ void main(){
 	IT0=1;
 	//允许定时器中断,外部中断,中断触发方式为下降沿触发
 	//led0=0;
+	peoplein=0;
 	while(1){
 	/*
 	1.扫描按键　（亮度／模式／色温）
@@ -59,8 +58,16 @@ void main(){
 		scankey();
 		switch(mode){
 			case 0: //手动
+			lighton=1;
 				break;
 			case 1://自动
+				if(!peoplein) {
+					lighton=0;
+				}else{
+					lighton=1;
+				}
+			
+			
 				break;
 		}
 		
