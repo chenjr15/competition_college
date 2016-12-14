@@ -53,9 +53,10 @@ void main(){
 	
 	*/
 		//1.key
-		brightness1=(uchar)brightness*(color*0.1);
+		brightness1=(UCHAR)brightness*(color*0.2);
 		brightness2=brightness-brightness1;
 		scankey();
+		ReadTemperature();
 		switch(mode){
 			case 0: //手动
 			lighton=1;

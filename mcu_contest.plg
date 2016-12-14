@@ -12,7 +12,7 @@ compiling main.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY?MAIN
-Program Size: data=15.1 xdata=0 code=893
+Program Size: data=15.1 xdata=0 code=909
 creating hex file from "mcu_contest"...
 "mcu_contest" - 0 Error(s), 1 Warning(s).
 Build target 'Target 1'
@@ -20,6 +20,118 @@ compiling main.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY?MAIN
-Program Size: data=15.1 xdata=0 code=909
+Program Size: data=15.1 xdata=0 code=911
 creating hex file from "mcu_contest"...
 "mcu_contest" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+Program Size: data=15.1 xdata=0 code=911
+creating hex file from "mcu_contest"...
+"mcu_contest" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+Program Size: data=15.1 xdata=0 code=918
+creating hex file from "mcu_contest"...
+"mcu_contest" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+Program Size: data=15.1 xdata=0 code=918
+creating hex file from "mcu_contest"...
+"mcu_contest" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+Program Size: data=15.1 xdata=0 code=916
+creating hex file from "mcu_contest"...
+"mcu_contest" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+mcu_contest.h(40): warning C235: parameter 1: different types
+mcu_contest.h(134): warning C235: parameter 1: different types
+mcu_contest.h(136): error C237: '_delay': function already has a body
+mcu_contest.h(229): error C202: 'I_0': undefined identifier
+mcu_contest.h(230): error C202: 'I_1': undefined identifier
+mcu_contest.h(231): error C202: 'F_1': undefined identifier
+mcu_contest.h(243): error C202: 'led0': undefined identifier
+mcu_contest.h(246): error C202: 'led1': undefined identifier
+mcu_contest.h(249): error C202: 'led0': undefined identifier
+mcu_contest.h(250): error C202: 'led1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+mcu_contest.h(40): warning C235: parameter 1: different types
+mcu_contest.h(134): warning C235: parameter 1: different types
+mcu_contest.h(136): error C237: '_delay': function already has a body
+mcu_contest.h(229): error C202: 'I_0': undefined identifier
+mcu_contest.h(230): error C202: 'I_1': undefined identifier
+mcu_contest.h(231): error C202: 'F_1': undefined identifier
+mcu_contest.h(243): error C202: 'led0': undefined identifier
+mcu_contest.h(246): error C202: 'led1': undefined identifier
+mcu_contest.h(249): error C202: 'led0': undefined identifier
+mcu_contest.h(250): error C202: 'led1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+mcu_contest.h(40): warning C235: parameter 1: different types
+mcu_contest.h(133): warning C235: parameter 1: different types
+mcu_contest.h(135): error C237: '_delay': function already has a body
+mcu_contest.h(228): error C202: 'I_0': undefined identifier
+mcu_contest.h(229): error C202: 'I_1': undefined identifier
+mcu_contest.h(230): error C202: 'F_1': undefined identifier
+mcu_contest.h(242): error C202: 'led0': undefined identifier
+mcu_contest.h(245): error C202: 'led1': undefined identifier
+mcu_contest.h(248): error C202: 'led0': undefined identifier
+mcu_contest.h(249): error C202: 'led1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+mcu_contest.h(41): warning C235: parameter 1: different types
+mcu_contest.h(134): warning C235: parameter 1: different types
+mcu_contest.h(136): error C237: '_delay': function already has a body
+mcu_contest.h(243): error C202: 'led0': undefined identifier
+mcu_contest.h(246): error C202: 'led1': undefined identifier
+mcu_contest.h(249): error C202: 'led0': undefined identifier
+mcu_contest.h(250): error C202: 'led1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+mcu_contest.h(34): warning C235: parameter 1: different types
+mcu_contest.h(127): warning C235: parameter 1: different types
+mcu_contest.h(129): error C237: '_delay': function already has a body
+Target not created
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY1MS?MAIN
+Program Size: data=27.1 xdata=0 code=1284
+creating hex file from "mcu_contest"...
+"mcu_contest" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+main.c(56): error C202: 'uchar': undefined identifier
+main.c(56): error C141: syntax error near 'brightness'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY1MS?MAIN
+Program Size: data=27.1 xdata=0 code=1284
+creating hex file from "mcu_contest"...
+"mcu_contest" - 0 Error(s), 2 Warning(s).
