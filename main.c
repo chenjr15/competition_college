@@ -22,8 +22,6 @@ TMOD:D7-D0
 #include <reg52.h>
 #include <intrins.h>
 #include <math.h>
-#include "oled.h"
-#include "bmp.h"
 #include "mcu_contest.h"
 
 
@@ -44,7 +42,7 @@ void main(){
 	//EA=1;
 	OLED_Init();			//初始化OLED  
 	OLED_Clear(); 
-	//TimeInit();
+	TimeInit();
 	peoplein=0;
 	while(1){
 	/*
@@ -71,7 +69,8 @@ void main(){
 		brightness2=brightness-brightness1;
 		
 		ReadTemperature();
-		//showtime();
+		showtime();
+
 		switch(mode){
 			case 0: //手动
 			lighton=1;
@@ -88,14 +87,15 @@ void main(){
 				break;}
 				//debug
 				
-				OLED_ShowChar(4,0,mode+'0',16);
-				OLED_ShowChar(20,0,color+'0',16);
-				OLED_ShowNum(36,0,brightness,2,16);
-				OLED_ShowNum(58,0,brightness1,2,16);
-				OLED_ShowNum(90,0,brightness2,2,16);
-				OLED_ShowNum(0,2,V,3,16);
-				OLED_ShowNum(58,2,count,1,16);
-				OLED_ShowNum(90,2,peoplein,1,16);
-				OLED_ShowNum(106,2,lighton,2,16);
-				OLED_ShowNum(0,4,I_1*100+I_0*10+F_1,3,16);
+//				OLED_ShowChar(4,0,mode+'0',16);
+//				OLED_ShowChar(20,0,color+'0',16);
+//				OLED_ShowNum(36,0,brightness,2,16);
+//				OLED_ShowNum(58,0,brightness1,2,16);
+//				OLED_ShowNum(90,0,brightness2,2,16);
+//				OLED_ShowNum(0,2,V,3,16);
+//				OLED_ShowNum(58,2,count,1,16);
+//				OLED_ShowNum(90,2,peoplein,1,16);
+//				OLED_ShowNum(106,2,lighton,2,16);
+//				OLED_ShowNum(0,4,I_1*100+I_0*10+F_1,3,16);
+				debug2=~debug2;
 				}}

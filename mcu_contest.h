@@ -1,3 +1,5 @@
+#include "oled.h"
+
 #define UINT unsigned int
 #define UCHAR unsigned char
 #define SINT short int
@@ -16,6 +18,11 @@
 #define ds1302_control_add		0x8e		//控制数据地址
 #define ds1302_charger_add		0x90 					 
 #define ds1302_clkburst_add		0xbe
+
+#define key_address_add			keymode		//时钟地址 +
+#define key_address_sub			keycolor	//时钟地址 -
+#define key_value_add			keyminus	//时间值   +
+#define key_value_sub			keyplus		//时间值   -
 
 
 //for debug 
@@ -54,7 +61,7 @@ unsigned char hy=6;
 unsigned char temper[3] = { 2,7,3 };
 u8 t=0;
 char fla_num = 13;//显示需要调节的位
-u8 select = 0;//时钟 调时间切换  1为调时间 0为正常显示时间
+u8 select = 0;//灯光调节与时钟调节的切换   0 为灯光调节 ；1为时间调节
 char alarmOn = 0;//闹钟默认关闭
 
 //DS1302引脚定义
@@ -64,10 +71,6 @@ sbit SCK = P1^1;
 
 
 sbit key_select = P3 ^ 7;//时钟切换
-sbit key_address_add = P2^1;
-sbit key_address_sub = P2^0;
-sbit key_value_add = P2^3;
-sbit key_value_sub = P2^2;
 
 
 UCHAR mode=0,color=1,brightness=10;
@@ -98,7 +101,7 @@ void WriteOneChar(unsigned char dat);
 void ReadTemperature(void);
 void ADC();
 
-/*
+
 typedef enum //星期
 {
 	Sunday,
@@ -443,185 +446,180 @@ void changeValue(char tmp) {
 		break;
 	}
 }
-// void scanKey() {
-// 	if (key_address_add==0&&select)
-// 	{
-// 		Delay6ms();
-// 		if (key_address_add==0)
-// 		{
-// 			fla_num++;
-// 			if (fla_num==18)
-// 			{
-// 				fla_num = 0;
-// 			}
-// 		}
-// 	}
-// 	/*if (key_address_sub == 0)
-// 	{
-// 		Delay6ms();
-// 		if (key_address_sub == 0)
-// 		{
-// 			fla_num--;
-// 			if (fla_num <0)
-// 			{
-// 				fla_num = 10;
-// 			}
-// 		}
-// 	}*/
-// 	if (key_select==0)
-// 	{
-// 		Delay6ms();
-// 		if (key_select==0)
-// 		{
-// 			if (++select > 1)
-// 			{
-// 				select = 0;
-// 			}
-// 			if (select)//selet为1时调时间，0为正常显示时间
-// 			{
-// 				ds1302_write_byte(ds1302_control_add, 0x00);			//关闭写保护
-// 				ds1302_write_byte(ds1302_sec_add, 0x80);				//暂停时钟 
-// 			}
-// 			else
-// 			{
-// 				ds1302_write_time();
-// 				ds1302_write_byte(ds1302_control_add, 0x80);			//打开写保护
-// 				ds1302_read_time();
-// 			}
-// 			
-// 		}
-// 	}
 
-// 	if (key_value_add == 0)
-// 	{
-// 		Delay6ms();
-// 		if (key_value_add == 0)
-// 		{
-// 			changeValue(1);
-// 		}
-// 	}
-// 	if (key_value_sub == 0)
-// 	{
-// 		Delay6ms();
-// 		if (key_value_sub == 0)
-// 		{
-// 			changeValue(-1);
-// 		}
-// 	}
-// }
+	 void TimeInit(){
+	 	Timer1Init();
 
-// void TimeInit(){
-// 	Init_timer2();
+	 	OLED_Init();			//初始化OLED  
+	 	OLED_Clear();
+	 	OLED_ShowCHinese(16, 0, 11);//温
+	 	OLED_ShowCHinese(32, 0, 12);//度
+	 	OLED_ShowChar(48, 0, ':', 16);//
+	 	OLED_ShowChar(76,0,'.',16);//.
 
-// 	OLED_Init();			//初始化OLED  
-// 	OLED_Clear();
-// 	OLED_ShowCHinese(16, 0, 11);//温
-// 	OLED_ShowCHinese(32, 0, 12);//度
-// 	OLED_ShowChar(48, 0, ':', 16);//
-// 	OLED_ShowChar(76,0,'.',16);//.
+	 	OLED_ShowCHinese(96, 0, 13);//℃
 
-// 	OLED_ShowCHinese(96, 0, 13);//℃
+	 	OLED_ShowCHinese(34, 4, 15);//年
+	 	OLED_ShowCHinese(16,6,0);//月
+	 	OLED_ShowCHinese(48 + 5,6,1);//日
+	 	OLED_ShowCHinese(68 + 8,6,2);//星
+	 	OLED_ShowCHinese(68 + 8 + 16,6,3);//期
 
-// 	OLED_ShowCHinese(34, 4, 15);//年
-// 	OLED_ShowCHinese(16,6,0);//月
-// 	OLED_ShowCHinese(48 + 5,6,1);//日
-// 	OLED_ShowCHinese(68 + 8,6,2);//星
-// 	OLED_ShowCHinese(68 + 8 + 16,6,3);//期
+	 									  /*闹钟部分******************************************************************/
+	 	OLED_ShowCHinese(56, 4, 16);//叉
+	 	OLED_ShowChar(90, 4, ':', 16);//：
+	 }
 
-// 									  /*闹钟部分******************************************************************/
-// 	OLED_ShowCHinese(56, 4, 16);//叉
-// 	OLED_ShowChar(90, 4, ':', 16);//：
-// }
+	 //显示屏幕的数据
+	 void ShowTime() {
+	 	if (alarmOn&&!select)//闹钟
+	 	{
+	 		if (alarm.hour[0] == time.hour[0] && alarm.hour[1] == time.hour[1] && alarm.minute[0] == time.minute[0] && alarm.minute[1] == time.minute[1])//判断时间是否相等
+	 		{
+	 			beep = 0;//蜂鸣器响
+	 		}
+	 		else
+	 		{
+	 			beep = 1;
+	 		}
+	 	}
+	 	show(&time, temper);
+	 }
 
-// //显示屏幕的数据
-// void ShowTime() {
-// 	if (alarmOn&&!select)//闹钟
-// 	{
-// 		if (alarm.hour[0] == time.hour[0] && alarm.hour[1] == time.hour[1] && alarm.minute[0] == time.minute[0] && alarm.minute[1] == time.minute[1])//判断时间是否相等
-// 		{
-// 			beep = 0;//蜂鸣器响
-// 		}
-// 		else
-// 		{
-// 			beep = 1;
-// 		}
-// 	}
-// 	show(&time, temper);
-// 	scanKey();
-// }
-
-////////////////////////////////////
+	////////////////////////////////////
 
 
-void Timer0Init(void)		//1毫秒@12MHz
-{
-	//AUXR &= 0x7F;		//定时器时钟12T模式
-	TMOD &= 0xF0;		//设置定时器模式
-	TMOD |= 0x01;		//设置定时器模式
-	TL0 = 0x18;		//设置定时初值
-	TH0 = 0xFC;		//设置定时初值
-	TF0 = 0;		//清除TF0标志
-	TR0 = 1;		//定时器0开始计时
-}
-void delay(UINT sec){
-	
-	while(sec--);
-
-}
-
-
-void Delay5ms()		//@11.0592MHz
-{
-	unsigned char i, j;
-
-	i = 9;
-	j = 244;
-	do
+	void Timer0Init(void)		//1毫秒@12MHz
 	{
-		while (--j);
-	} while (--i);
-}
-
-void scankey(){
-	
-	if (keymode==0){
-
-		Delay5ms();Delay5ms();
-		if (keymode==0){
-			while(!keymode);
-			debug1=~debug1;
-			mode++;
-			if(mode>1)mode=0;
-			
-
-	}}
-	if (keycolor==0){
-
-		Delay5ms();Delay5ms();
-		if (keycolor==0){
-			while(!keycolor);
-			color+=1;
-			color%=5;//6档色温，等于5时归0
-
-	}}
-	debug2=mode;
-	if (mode==0){
-		if (keyplus==0){
-			Delay5ms();
-			if(keyplus==0){
-				while(!keyplus);
-			brightness=5+brightness;
-			if(brightness>=15){brightness=15;}
-			}}
-		if (keyminus==0){
-			Delay5ms();
-			if(keyminus==0){
-				while(!keyminus);
-				brightness=brightness-5;
-				if(brightness<=0)
-					brightness=5;}
-	}}
+		//AUXR &= 0x7F;		//定时器时钟12T模式
+		TMOD &= 0xF0;		//设置定时器模式
+		TMOD |= 0x01;		//设置定时器模式
+		TL0 = 0x18;		//设置定时初值
+		TH0 = 0xFC;		//设置定时初值
+		TF0 = 0;		//清除TF0标志
+		TR0 = 1;		//定时器0开始计时
 	}
+	void delay(UINT sec) {
+
+		while (sec--);
+
+	}
+
+
+	void Delay5ms()		//@11.0592MHz
+	{
+		unsigned char i, j;
+
+		i = 9;
+		j = 244;
+		do
+		{
+			while (--j);
+		} while (--i);
+	}
+
+void scankey() {
+
+		//灯光 时钟模式切换键
+		if (key_select == 0)
+		{
+			Delay5ms();
+			if (key_select == 0)
+			{
+				select = (++select) % 2;
+				//这边可能有bug
+				if (select)//selet为1时调时间，0为正常显示时间
+				{
+					ds1302_write_byte(ds1302_control_add, 0x00);			//关闭写保护
+					ds1302_write_byte(ds1302_sec_add, 0x80);				//暂停时钟 
+				}
+				else
+				{
+					ds1302_write_time();
+					ds1302_write_byte(ds1302_control_add, 0x80);			//打开写保护
+					ds1302_read_time();
+				}
+			}
+		}
+
+		if (keymode == 0) {
+
+			Delay5ms(); Delay5ms();
+			if (keymode == 0 && !select) {
+				while (!keymode);
+				
+				mode++;
+				if (mode > 1)mode = 0;
+			}
+			if (key_address_add == 0 && select)//时钟地址增加键
+			{
+				fla_num++;
+				if (fla_num == 18)
+				{
+					fla_num = 0;
+				}
+			}
+		}
+
+	if (keycolor == 0) {
+
+		Delay5ms(); Delay5ms();
+		if (keycolor == 0 && !select) {
+			while (!keycolor);
+			color += 1;
+			color %= 5;//6档色温，等于5时归0
+		}
+		if (key_address_sub == 0 && select)//时钟地址减少键
+		{
+			Delay5ms();
+			if (key_address_sub == 0)
+			{
+				fla_num--;
+				if (fla_num < 0)
+				{
+					fla_num = 10;
+				}
+			}
+		}
+	}
+	/*debug2=mode;*/
+
+	if (keyplus == 0) {
+		Delay5ms();
+		if (mode == 0 && keyplus == 0&& !select) {
+			while (!keyplus);
+			brightness = 5 + brightness;
+			if (brightness >= 15) { brightness = 15; }
+		}
+		if (key_value_add == 0&&select)
+		{
+			Delay5ms();
+			if (key_value_add == 0)
+			{
+				changeValue(1);
+			}
+		}
+	}
+
+
+	if (keyminus == 0) {
+		Delay5ms();
+		if (mode == 0 && keyminus == 0 && !select) {
+			while (!keyminus);
+			brightness = brightness - 5;
+			if (brightness <= 0)
+				brightness = 5;
+		}
+		if (key_value_sub == 0)
+		{
+			Delay5ms();
+			if (key_value_sub == 0)
+			{
+				changeValue(-1);
+			}
+		}
+	}
+}
 
 
 
@@ -769,13 +767,14 @@ if(lighton==1){
 }
 }
 
-/*
+
 void Timer2() interrupt 3	  //定时器1是3号中断
 {
 	
 	TL1 = 0xB0;		//设置定时初值
 	TH1 = 0x3C;		//设置定时初值
-	//TF2=0;
+	TF1=0;
+	debug1 = ~debug1;
 	 t++;
 	if(t==4)               //间隔200ms(50ms*4)读取一次时间
 	{
@@ -810,6 +809,9 @@ void Timer2() interrupt 3	  //定时器1是3号中断
 	   time.sec[0]=(time_buf[6]>>4); //秒   
 	   time.sec[1]=(time_buf[6]&0x0f);
    
+		//读取温度
+		temper[0]=I_1;
+		temper[1]=I_0;
+		temper[2]=F_1;
 	  }
 }
-*/
