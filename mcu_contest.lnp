@@ -1,4 +1,5 @@
 "STARTUP.obj",
-"main.obj" 
+"main.obj",
+"oled.obj" 
 TO "mcu_contest" 
 RAMSIZE(256) 

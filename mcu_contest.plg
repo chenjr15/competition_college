@@ -4,111 +4,335 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 D:\Keil\project\microcontroller_DaSai\mcu_contest.uvproj
-Project File Date:  12/06/2016
+Project File Date:  12/15/2016
 
 <h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling oled.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY1MS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_FILL_PICTURE?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_50MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_1MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWSTRING?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWCHINESE?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_DRAWBMP?OLED
+Program Size: data=70.1 xdata=0 code=5886
+creating hex file from "mcu_contest"...
+"mcu_contest" - 0 Error(s), 13 Warning(s).
 Build target 'Target 1'
 compiling main.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY?MAIN
-Program Size: data=15.1 xdata=0 code=909
-creating hex file from "mcu_contest"...
-"mcu_contest" - 0 Error(s), 1 Warning(s).
-Build target 'Target 1'
-compiling main.c...
-linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY?MAIN
-Program Size: data=15.1 xdata=0 code=911
-creating hex file from "mcu_contest"...
-"mcu_contest" - 0 Error(s), 1 Warning(s).
-Build target 'Target 1'
-compiling main.c...
-linking...
+    SEGMENT: ?PR?DELAY1MS?MAIN
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY?MAIN
-Program Size: data=15.1 xdata=0 code=911
-creating hex file from "mcu_contest"...
-"mcu_contest" - 0 Error(s), 1 Warning(s).
-Build target 'Target 1'
-compiling main.c...
-linking...
+    SEGMENT: ?CO?MAIN
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY?MAIN
-Program Size: data=15.1 xdata=0 code=918
-creating hex file from "mcu_contest"...
-"mcu_contest" - 0 Error(s), 1 Warning(s).
-Build target 'Target 1'
-compiling main.c...
-linking...
+    SEGMENT: ?PR?_DELAY_MS?OLED
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY?MAIN
-Program Size: data=15.1 xdata=0 code=918
-creating hex file from "mcu_contest"...
-"mcu_contest" - 0 Error(s), 1 Warning(s).
-Build target 'Target 1'
-compiling main.c...
-linking...
+    SEGMENT: ?PR?_FILL_PICTURE?OLED
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY?MAIN
-Program Size: data=15.1 xdata=0 code=916
+    SEGMENT: ?PR?_DELAY_50MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_1MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWSTRING?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWCHINESE?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_DRAWBMP?OLED
+Program Size: data=70.1 xdata=0 code=5867
 creating hex file from "mcu_contest"...
-"mcu_contest" - 0 Error(s), 1 Warning(s).
+"mcu_contest" - 0 Error(s), 13 Warning(s).
 Build target 'Target 1'
 compiling main.c...
-mcu_contest.h(40): warning C235: parameter 1: different types
-mcu_contest.h(134): warning C235: parameter 1: different types
-mcu_contest.h(136): error C237: '_delay': function already has a body
-mcu_contest.h(229): error C202: 'I_0': undefined identifier
-mcu_contest.h(230): error C202: 'I_1': undefined identifier
-mcu_contest.h(231): error C202: 'F_1': undefined identifier
-mcu_contest.h(243): error C202: 'led0': undefined identifier
-mcu_contest.h(246): error C202: 'led1': undefined identifier
-mcu_contest.h(249): error C202: 'led0': undefined identifier
-mcu_contest.h(250): error C202: 'led1': undefined identifier
+mcu_contest.h(56): error C129: missing ';' before 't'
 Target not created
 Build target 'Target 1'
 compiling main.c...
-mcu_contest.h(40): warning C235: parameter 1: different types
-mcu_contest.h(134): warning C235: parameter 1: different types
-mcu_contest.h(136): error C237: '_delay': function already has a body
-mcu_contest.h(229): error C202: 'I_0': undefined identifier
-mcu_contest.h(230): error C202: 'I_1': undefined identifier
-mcu_contest.h(231): error C202: 'F_1': undefined identifier
-mcu_contest.h(243): error C202: 'led0': undefined identifier
-mcu_contest.h(246): error C202: 'led1': undefined identifier
-mcu_contest.h(249): error C202: 'led0': undefined identifier
-mcu_contest.h(250): error C202: 'led1': undefined identifier
+mcu_contest.h(443): error C202: 'key_address_add': undefined identifier
+mcu_contest.h(446): error C202: 'key_address_add': undefined identifier
+mcu_contest.h(491): error C202: 'key_value_add': undefined identifier
+mcu_contest.h(494): error C202: 'key_value_add': undefined identifier
+mcu_contest.h(499): error C202: 'key_value_sub': undefined identifier
+mcu_contest.h(502): error C202: 'key_value_sub': undefined identifier
+mcu_contest.h(509): error C141: syntax error near '{'
+mcu_contest.h(512): error C231: 'OLED_Init': redefinition
+mcu_contest.h(513): error C231: 'OLED_Clear': redefinition
+mcu_contest.h(514): error C141: syntax error near '16'
+mcu_contest.h(514): error C231: '_OLED_ShowCHinese': redefinition
+mcu_contest.h(515): error C141: syntax error near '32'
+mcu_contest.h(515): error C231: '_OLED_ShowCHinese': redefinition
+mcu_contest.h(516): error C141: syntax error near '48'
+mcu_contest.h(516): error C231: '_OLED_ShowChar': redefinition
+mcu_contest.h(517): error C141: syntax error near '76'
+mcu_contest.h(517): error C231: '_OLED_ShowChar': redefinition
+mcu_contest.h(519): error C141: syntax error near '96'
+mcu_contest.h(519): error C231: '_OLED_ShowCHinese': redefinition
+mcu_contest.h(521): error C141: syntax error near '34'
+mcu_contest.h(521): error C231: '_OLED_ShowCHinese': redefinition
+mcu_contest.h(522): error C141: syntax error near '16'
+mcu_contest.h(522): error C231: '_OLED_ShowCHinese': redefinition
+mcu_contest.h(523): error C141: syntax error near '48'
+mcu_contest.h(523): error C231: '_OLED_ShowCHinese': redefinition
+mcu_contest.h(524): error C141: syntax error near '68'
+mcu_contest.h(524): error C231: '_OLED_ShowCHinese': redefinition
+mcu_contest.h(525): error C141: syntax error near '68'
+mcu_contest.h(525): error C231: '_OLED_ShowCHinese': redefinition
+mcu_contest.h(528): error C141: syntax error near '56'
+mcu_contest.h(528): error C231: '_OLED_ShowCHinese': redefinition
+mcu_contest.h(529): error C141: syntax error near '90'
+mcu_contest.h(529): error C231: '_OLED_ShowChar': redefinition
+mcu_contest.h(530): error C141: syntax error near '}'
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+mcu_contest.h(443): error C202: 'key_address_add': undefined identifier
+mcu_contest.h(446): error C202: 'key_address_add': undefined identifier
+mcu_contest.h(491): error C202: 'key_value_add': undefined identifier
+mcu_contest.h(494): error C202: 'key_value_add': undefined identifier
+mcu_contest.h(499): error C202: 'key_value_sub': undefined identifier
+mcu_contest.h(502): error C202: 'key_value_sub': undefined identifier
+compiling oled.c...
 Target not created
 Build target 'Target 1'
 compiling main.c...
-mcu_contest.h(40): warning C235: parameter 1: different types
-mcu_contest.h(133): warning C235: parameter 1: different types
-mcu_contest.h(135): error C237: '_delay': function already has a body
-mcu_contest.h(228): error C202: 'I_0': undefined identifier
-mcu_contest.h(229): error C202: 'I_1': undefined identifier
-mcu_contest.h(230): error C202: 'F_1': undefined identifier
-mcu_contest.h(242): error C202: 'led0': undefined identifier
-mcu_contest.h(245): error C202: 'led1': undefined identifier
-mcu_contest.h(248): error C202: 'led0': undefined identifier
-mcu_contest.h(249): error C202: 'led1': undefined identifier
+mcu_contest.h(443): error C202: 'key_address_add': undefined identifier
+mcu_contest.h(446): error C202: 'key_address_add': undefined identifier
+mcu_contest.h(491): error C202: 'key_value_add': undefined identifier
+mcu_contest.h(494): error C202: 'key_value_add': undefined identifier
+mcu_contest.h(499): error C202: 'key_value_sub': undefined identifier
+mcu_contest.h(502): error C202: 'key_value_sub': undefined identifier
 Target not created
 Build target 'Target 1'
 compiling main.c...
-mcu_contest.h(41): warning C235: parameter 1: different types
-mcu_contest.h(134): warning C235: parameter 1: different types
-mcu_contest.h(136): error C237: '_delay': function already has a body
-mcu_contest.h(243): error C202: 'led0': undefined identifier
-mcu_contest.h(246): error C202: 'led1': undefined identifier
-mcu_contest.h(249): error C202: 'led0': undefined identifier
-mcu_contest.h(250): error C202: 'led1': undefined identifier
+mcu_contest.h(68): error C146: 'keycolor': invalid base address
+mcu_contest.h(69): error C146: 'keymode': invalid base address
+mcu_contest.h(70): error C146: 'keyplus': invalid base address
+mcu_contest.h(71): error C146: 'keyminus': invalid base address
+mcu_contest.h(448): error C202: 'key_address_add': undefined identifier
+mcu_contest.h(451): error C202: 'key_address_add': undefined identifier
+mcu_contest.h(496): error C202: 'key_value_add': undefined identifier
+mcu_contest.h(499): error C202: 'key_value_add': undefined identifier
+mcu_contest.h(504): error C202: 'key_value_sub': undefined identifier
+mcu_contest.h(507): error C202: 'key_value_sub': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+mcu_contest.h(514): warning C206: 'Init_timer2': missing function-prototype
+main.c(74): warning C206: 'showtime': missing function-prototype
+compiling oled.c...
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: T1LMC-VNTKZC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"STARTUP.obj",
+"main.obj",
+"oled.obj" 
+TO "mcu_contest" 
+RAMSIZE(256) 
+*** FATAL ERROR L256: MODULE CONTAINS DUPLICATE SEGMENT NAMES
+    SEGMENT: ?PR?SCANKEY?MAIN
+    MODULE:  main.obj (MAIN)
 Target not created
 Build target 'Target 1'
 compiling main.c...
-mcu_contest.h(34): warning C235: parameter 1: different types
-mcu_contest.h(127): warning C235: parameter 1: different types
-mcu_contest.h(129): error C237: '_delay': function already has a body
+mcu_contest.h(514): warning C206: 'Init_timer2': missing function-prototype
+mcu_contest.h(550): warning C206: 'scanKey': missing function-prototype
+main.c(74): warning C206: 'showtime': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY6MS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DS1302_INIT?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DS1302_WRITE_TIME?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TIMER1INIT?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGEVALUE?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY1MS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_FILL_PICTURE?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_50MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_1MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWNUM?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWSTRING?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_DRAWBMP?OLED
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  INIT_TIMER2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  INIT_TIMER2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 14BCH
+Program Size: data=114.1 xdata=0 code=7225
+creating hex file from "mcu_contest"...
+"mcu_contest" - 0 Error(s), 23 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+mcu_contest.h(514): warning C206: 'Init_timer2': missing function-prototype
+mcu_contest.h(550): warning C206: 'scanKey': missing function-prototype
+main.c(74): warning C206: 'showtime': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY6MS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DS1302_INIT?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DS1302_WRITE_TIME?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TIMER1INIT?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGEVALUE?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY1MS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_FILL_PICTURE?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_50MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_1MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWSTRING?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_DRAWBMP?OLED
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  INIT_TIMER2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  INIT_TIMER2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 157EH
+Program Size: data=104.1 xdata=0 code=7419
+creating hex file from "mcu_contest"...
+"mcu_contest" - 0 Error(s), 22 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+mcu_contest.h(514): warning C206: 'Init_timer2': missing function-prototype
+mcu_contest.h(550): warning C206: 'scanKey': missing function-prototype
+main.c(74): warning C206: 'showtime': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY6MS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DS1302_INIT?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DS1302_WRITE_TIME?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TIMER1INIT?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGEVALUE?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY1MS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_FILL_PICTURE?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_50MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_1MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWNUM?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWSTRING?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_DRAWBMP?OLED
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  INIT_TIMER2
+    MODULE:  main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  INIT_TIMER2
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 14BCH
+Program Size: data=114.1 xdata=0 code=7225
+creating hex file from "mcu_contest"...
+"mcu_contest" - 0 Error(s), 23 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+mcu_contest.h(514): warning C206: 'Init_timer2': missing function-prototype
+mcu_contest.h(538): error C202: 'alarmOn': undefined identifier
+mcu_contest.h(542): error C202: 'beep': undefined identifier
+mcu_contest.h(546): error C202: 'beep': undefined identifier
+mcu_contest.h(549): error C202: 'time': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+mcu_contest.h(779): error C202: 't': undefined identifier
+mcu_contest.h(780): error C202: 't': undefined identifier
+mcu_contest.h(782): error C202: 't': undefined identifier
+mcu_contest.h(783): error C202: 'select': undefined identifier
 Target not created
 Build target 'Target 1'
 compiling main.c...
@@ -117,14 +341,31 @@ linking...
     SEGMENT: ?PR?_DELAY?MAIN
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?DELAY1MS?MAIN
-Program Size: data=27.1 xdata=0 code=1284
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_FILL_PICTURE?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_50MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_1MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWSTRING?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWCHINESE?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_DRAWBMP?OLED
+Program Size: data=70.1 xdata=0 code=5884
 creating hex file from "mcu_contest"...
-"mcu_contest" - 0 Error(s), 2 Warning(s).
-Build target 'Target 1'
-compiling main.c...
-main.c(56): error C202: 'uchar': undefined identifier
-main.c(56): error C141: syntax error near 'brightness'
-Target not created
+"mcu_contest" - 0 Error(s), 13 Warning(s).
 Build target 'Target 1'
 compiling main.c...
 linking...
@@ -132,6 +373,28 @@ linking...
     SEGMENT: ?PR?_DELAY?MAIN
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?DELAY1MS?MAIN
-Program Size: data=27.1 xdata=0 code=1284
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_FILL_PICTURE?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_50MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_1MS?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_DISPLAY_OFF?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?OLED_ON?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWSTRING?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_SHOWCHINESE?OLED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_OLED_DRAWBMP?OLED
+Program Size: data=80.1 xdata=0 code=5910
 creating hex file from "mcu_contest"...
-"mcu_contest" - 0 Error(s), 2 Warning(s).
+"mcu_contest" - 0 Error(s), 13 Warning(s).

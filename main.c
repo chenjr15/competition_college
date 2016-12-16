@@ -19,7 +19,13 @@ TMOD:D7-D0
 			T1		  |			T0
 
 */
+#include <reg52.h>
+#include <intrins.h>
+#include <math.h>
+#include "oled.h"
+#include "bmp.h"
 #include "mcu_contest.h"
+
 
 
 void main(){
@@ -27,11 +33,18 @@ void main(){
 	Timer0Init();
 	//初始化定时器
 	EA=1;
-	//允许中中断
+	//允许中断
 	ET0=1;EX0=1;
 	IT0=1;
-	//允许定时器中断,外部中断,中断触发方式为下降沿触发
-	//led0=0;
+	//允许定时器中断
+    T2MOD = 0x02;                   //enable timer2 output clock
+    RCAP2L = TL2 = F500KHz;        //initial timer2 low byte
+    RCAP2H = TH2 = F500KHz >> 8;   //initial timer2 high byte
+    TR2 = 1;                        //timer2 start running
+	//EA=1;
+	OLED_Init();			//初始化OLED  
+	OLED_Clear(); 
+	//TimeInit();
 	peoplein=0;
 	while(1){
 	/*
@@ -53,10 +66,12 @@ void main(){
 	
 	*/
 		//1.key
+		scankey();
 		brightness1=(UCHAR)brightness*(color*0.2);
 		brightness2=brightness-brightness1;
-		scankey();
+		
 		ReadTemperature();
+		//showtime();
 		switch(mode){
 			case 0: //手动
 			lighton=1;
@@ -66,13 +81,21 @@ void main(){
 					lighton=0;
 				}else{
 					lighton=1;
+					ADC();
+					if ((brightness>brightness_auto)&&(brightness_auto<=15)) brightness+=2;
+					if ((brightness<brightness_auto)&&(brightness_auto>=0)) brightness-=2;	
 				}
-			
-			
-				break;
-		}
-		
-	}
-	
-	
-}
+				break;}
+				//debug
+				
+				OLED_ShowChar(4,0,mode+'0',16);
+				OLED_ShowChar(20,0,color+'0',16);
+				OLED_ShowNum(36,0,brightness,2,16);
+				OLED_ShowNum(58,0,brightness1,2,16);
+				OLED_ShowNum(90,0,brightness2,2,16);
+				OLED_ShowNum(0,2,V,3,16);
+				OLED_ShowNum(58,2,count,1,16);
+				OLED_ShowNum(90,2,peoplein,1,16);
+				OLED_ShowNum(106,2,lighton,2,16);
+				OLED_ShowNum(0,4,I_1*100+I_0*10+F_1,3,16);
+				}}

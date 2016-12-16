@@ -1,2 +1,2 @@
-#include "contest_mcu.h"
+#include "mcu_contest.h"
 

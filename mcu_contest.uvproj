@@ -360,9 +360,9 @@
               <FilePath>.\main.c</FilePath>
             </File>
             <File>
-              <FileName>mcu_contest.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\mcu_contest.h</FilePath>
+              <FileName>oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\oled.c</FilePath>
             </File>
           </Files>
         </Group>
