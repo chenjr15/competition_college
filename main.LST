@@ -1,4 +1,4 @@
-C51 COMPILER V9.50a   MAIN                                                                 12/16/2016 10:09:27 PAGE 1   
+C51 COMPILER V9.50a   MAIN                                                                 12/16/2016 17:55:59 PAGE 1   
 
 
 C51 COMPILER V9.50a, COMPILATION OF MODULE MAIN
@@ -31,30 +31,30 @@ line level    source
   22          #include <reg52.h>
   23          #include <intrins.h>
   24          #include <math.h>
-  25          #include "oled.h"
-  26          #include "bmp.h"
-  27          #include "mcu_contest.h"
+  25          #include "mcu_contest.h"
+  26          
+  27          
   28          
-  29          
-  30          
-  31          void main(){
-  32   1              
-  33   1              Timer0Init();
-  34   1              //初始化定时器
-  35   1              EA=1;
-  36   1              //允许中断
-  37   1              ET0=1;EX0=1;
-  38   1              IT0=1;
-  39   1              //允许定时器中断
-  40   1          T2MOD = 0x02;                   //enable timer2 output clock
-  41   1          RCAP2L = TL2 = F500KHz;        //initial timer2 low byte
-  42   1          RCAP2H = TH2 = F500KHz >> 8;   //initial timer2 high byte
-  43   1          TR2 = 1;                        //timer2 start running
-  44   1              //EA=1;
-  45   1              OLED_Init();                    //初始化OLED  
-  46   1              OLED_Clear(); 
-  47   1              //TimeInit();
-  48   1              peoplein=0;
+  29          void main(){
+  30   1              
+  31   1              Timer0Init();
+  32   1              //初始化定时器
+  33   1              EA=1;
+  34   1              //允许中断
+  35   1              ET0=1;EX0=1;
+  36   1              IT0=1;
+  37   1              //允许定时器中断
+  38   1          T2MOD = 0x02;                   //enable timer2 output clock
+  39   1          RCAP2L = TL2 = F500KHz;        //initial timer2 low byte
+  40   1          RCAP2H = TH2 = F500KHz >> 8;   //initial timer2 high byte
+  41   1          TR2 = 1;                        //timer2 start running
+  42   1              //EA=1;
+  43   1              OLED_Init();                    //初始化OLED  
+  44   1              OLED_Clear(); 
+  45   1              TimeInit();
+  46   1              peoplein=0;
+  47   1              lighton=1;
+  48   1      
   49   1              while(1){
   50   2              /*
   51   2              1.扫描按键　（亮度／模式／色温）
@@ -62,7 +62,7 @@ line level    source
   53   2              若自动：
   54   2                      读取红外传感器的值
   55   2                              若为0 设置PWM亮度（占空比）为1
-C51 COMPILER V9.50a   MAIN                                                                 12/16/2016 10:09:27 PAGE 2   
+C51 COMPILER V9.50a   MAIN                                                                 12/16/2016 17:55:59 PAGE 2   
 
   56   2                              若为1 读取亮度传感器的值，并设置相应占空比
   57   2              若手动;
@@ -83,42 +83,80 @@ line level    source
   71   2                      brightness2=brightness-brightness1;
   72   2                      
   73   2                      ReadTemperature();
-  74   2                      //showtime();
-  75   2                      switch(mode){
-  76   3                              case 0: //手动
-  77   3                              lighton=1;
-  78   3                                      break;
-  79   3                              case 1://自动
-  80   3                                      if(!peoplein) {
-  81   4                                              lighton=0;
-  82   4                                      }else{
-  83   4                                              lighton=1;
-  84   4                                              ADC();
-  85   4                                              if ((brightness>brightness_auto)&&(brightness_auto<=15)) brightness+=2;
-  86   4                                              if ((brightness<brightness_auto)&&(brightness_auto>=0)) brightness-=2;  
-  87   4                                      }
-  88   3                                      break;}
-  89   2                                      //debug
-  90   2                                      
-  91   2                                      OLED_ShowChar(4,0,mode+'0',16);
-  92   2                                      OLED_ShowChar(20,0,color+'0',16);
-  93   2                                      OLED_ShowNum(36,0,brightness,2,16);
-  94   2                                      OLED_ShowNum(58,0,brightness1,2,16);
-  95   2                                      OLED_ShowNum(90,0,brightness2,2,16);
-  96   2                                      OLED_ShowNum(0,2,V,3,16);
-  97   2                                      OLED_ShowNum(58,2,count,1,16);
-  98   2                                      OLED_ShowNum(90,2,peoplein,1,16);
-  99   2                                      OLED_ShowNum(106,2,lighton,2,16);
- 100   2                                      OLED_ShowNum(0,4,I_1*100+I_0*10+F_1,3,16);
- 101   2                                      }}
+  74   2                      ShowTime();
+  75   2      
+  76   2                      switch(mode){
+  77   3                              case 0: //手动
+  78   3                              lighton=1;
+  79   3                                      break;
+  80   3                              case 1://自动
+  81   3                                      if(!peoplein) {
+  82   4                                              lighton=0;
+  83   4                                      }else{
+  84   4                                              lighton=1;
+  85   4                                              ADC();
+  86   4                                              if ((brightness>brightness_auto)&&(brightness_auto<=15)) brightness+=2;
+  87   4                                              if ((brightness<brightness_auto)&&(brightness_auto>=0)) brightness-=2;  
+  88   4                                      }
+  89   3                                      break;}
+  90   2                                      //debug
+  91   2                                      
+  92   2                                      OLED_ShowChar(0,2,mode+'0',16);
+  93   2      //                              OLED_ShowChar(20,0,color+'0',16);
+  94   2      //                              OLED_ShowNum(36,0,brightness,2,16);
+  95   2      //                              OLED_ShowNum(58,0,brightness1,2,16);
+  96   2      //                              OLED_ShowNum(90,0,brightness2,2,16);
+  97   2      //                              OLED_ShowNum(0,2,V,3,16);
+  98   2      //                              OLED_ShowNum(58,2,count,1,16);
+  99   2      //                              OLED_ShowNum(90,2,peoplein,1,16);
+ 100   2      //                              OLED_ShowNum(106,2,lighton,2,16);
+ 101   2      //                              OLED_ShowNum(0,4,I_1*100+I_0*10+F_1,3,16);
+ 102   2                                      debug2=~debug2;
+ 103   2              if (!select)
+ 104   2                      {
+ 105   3                              ds1302_read_time();  //读取时间 
+ 106   3                      }
+ 107   2              
+ 108   2                 time.year[0]=(time_buf[0]>>4); //年   
+ 109   2                 time.year[1]=(time_buf[0]&0x0f);
+ 110   2         
+ 111   2                 time.year[2]=(time_buf[1]>>4);
+ 112   2                 time.year[3]=(time_buf[1]&0x0f);
+ 113   2         
+ 114   2                 time.month[0]=(time_buf[2]>>4); //月  
+ 115   2                 time.month[1] =(time_buf[2]&0x0f);
+ 116   2         
+C51 COMPILER V9.50a   MAIN                                                                 12/16/2016 17:55:59 PAGE 3   
+
+ 117   2      
+ 118   2                 time.day[0]=(time_buf[3]>>4); //日   
+ 119   2                 time.day[1] =(time_buf[3]&0x0f);
+ 120   2         
+ 121   2                 time.week=(time_buf[7]&0x07); //星期
+ 122   2         
+ 123   2                 //第2行显示  
+ 124   2                 time.hour[0]=(time_buf[4]>>4); //时   
+ 125   2                 time.hour[1]=(time_buf[4]&0x0f);   
+ 126   2      
+ 127   2                 time.minute[0]=(time_buf[5]>>4); //分   
+ 128   2                 time.minute[1]=(time_buf[5]&0x0f);   
+ 129   2      
+ 130   2                 time.sec[0]=(time_buf[6]>>4); //秒   
+ 131   2                 time.sec[1]=(time_buf[6]&0x0f);
+ 132   2         
+ 133   2                      //读取温度
+ 134   2                      temper[0]=I_1;
+ 135   2                      temper[1]=I_0;
+ 136   2                      temper[2]=F_1;
+ 137   2                                      }}
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    973    ----
-   CONSTANT SIZE    =    144    ----
+   CODE SIZE        =   2465    ----
+   CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     32    ----
+   DATA SIZE        =     59      11
    IDATA SIZE       =   ----    ----
    BIT SIZE         =      1    ----
 END OF MODULE INFORMATION.

@@ -1,5 +1,7 @@
 #include "oled.h"
-
+#include "REG52.h"
+// #ifndef __MCU_CONTEST_H
+// #define __MCU_CONTEST_H
 #define UINT unsigned int
 #define UCHAR unsigned char
 #define SINT short int
@@ -728,11 +730,12 @@ void ReadTemperature(void)
 		F_1=xiaoshu1;
 }
 
-
 void ADC(void){
 	START=0;
 	START=1;
 	START=0;
+
+	
 	while(EOC==0);//wait for replay
 	OE=1;
 	
@@ -744,6 +747,8 @@ void ADC(void){
 	if ( brightness_auto>15) brightness_auto=15;
 }
 
+
+
 void timer0() interrupt 1{
 	
 	//因为定时器在溢出后寄存器中的初值寄存器自动归零，
@@ -751,9 +756,13 @@ void timer0() interrupt 1{
 	TL0 = 0x18;		//设置定时初值
 	TH0 = 0xFc;		//设置定时初值
 	count++;
+// 	TF0=
 if(lighton==1){
+	
+	//led0=0;
 	if (count==brightness1){
-		led0=0;}
+		led0=0;
+		}
 		
 	if (count==brightness2){
 		led1=0;}
@@ -815,3 +824,5 @@ void Timer2() interrupt 3	  //定时器1是3号中断
 		temper[2]=F_1;
 	  }
 }
+// #endif  
+	 

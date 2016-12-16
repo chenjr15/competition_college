@@ -44,6 +44,8 @@ void main(){
 	OLED_Clear(); 
 	TimeInit();
 	peoplein=0;
+	lighton=1;
+
 	while(1){
 	/*
 	1.扫描按键　（亮度／模式／色温）
@@ -69,7 +71,7 @@ void main(){
 		brightness2=brightness-brightness1;
 		
 		ReadTemperature();
-		showtime();
+		ShowTime();
 
 		switch(mode){
 			case 0: //手动
@@ -87,7 +89,7 @@ void main(){
 				break;}
 				//debug
 				
-//				OLED_ShowChar(4,0,mode+'0',16);
+				OLED_ShowChar(0,2,mode+'0',16);
 //				OLED_ShowChar(20,0,color+'0',16);
 //				OLED_ShowNum(36,0,brightness,2,16);
 //				OLED_ShowNum(58,0,brightness1,2,16);
@@ -98,4 +100,38 @@ void main(){
 //				OLED_ShowNum(106,2,lighton,2,16);
 //				OLED_ShowNum(0,4,I_1*100+I_0*10+F_1,3,16);
 				debug2=~debug2;
+	if (!select)
+		{
+			ds1302_read_time();  //读取时间 
+		}
+	
+	   time.year[0]=(time_buf[0]>>4); //年   
+	   time.year[1]=(time_buf[0]&0x0f);
+   
+	   time.year[2]=(time_buf[1]>>4);
+	   time.year[3]=(time_buf[1]&0x0f);
+   
+	   time.month[0]=(time_buf[2]>>4); //月  
+	   time.month[1] =(time_buf[2]&0x0f);
+   
+
+	   time.day[0]=(time_buf[3]>>4); //日   
+	   time.day[1] =(time_buf[3]&0x0f);
+   
+	   time.week=(time_buf[7]&0x07); //星期
+   
+	   //第2行显示  
+	   time.hour[0]=(time_buf[4]>>4); //时   
+	   time.hour[1]=(time_buf[4]&0x0f);   
+
+	   time.minute[0]=(time_buf[5]>>4); //分   
+	   time.minute[1]=(time_buf[5]&0x0f);   
+
+	   time.sec[0]=(time_buf[6]>>4); //秒   
+	   time.sec[1]=(time_buf[6]&0x0f);
+   
+		//读取温度
+		temper[0]=I_1;
+		temper[1]=I_0;
+		temper[2]=F_1;
 				}}
